@@ -5,14 +5,16 @@
 
 class Price 
 {
-private:
-    double usd, eur, pln;
 public:
-    void setPrice(double pt_usd, double pt_eur, double pt_pln)
+    double m_usd;
+    double m_eur;
+    double m_pln;
+
+    void print()
     {
-        usd = pt_usd;
-        eur = pt_eur;
-        pln = pt_pln;
+        std::cout << " USD = " << m_usd << " грн" << std::endl;
+        std::cout << " EUR = " << m_eur << " грн" << std::endl;
+        std::cout << " PLN = " << m_pln << " грн" << std::endl;
     }
 };
 
@@ -21,25 +23,20 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-
-    
-    int i;
-
-    
-    while (1)
+    while (int i = 1)
     {
 
         std::string  choice, так;
         double inp, out;
        
-        int i;
+        
 
-        Price pt;
+        Price value {40.5, 39.35, 8.36};
+        
+        value.print();
 
-        std::cout << " USD = " << usd << " грн" << std::endl;
-        std::cout << " EUR = " << eur << " грн" << std::endl;
-        std::cout << " PLN = " << pln << " грн" << std::endl;
-
+        
+ 
         std::cout << "¬вед≥ть валюту дл€ обм≥ну: " << std::endl;
         std::cin >> choice;
 
@@ -48,20 +45,20 @@ int main()
 
         if (choice == "usd")
         {
-            out = inp / usd;
+            out = inp / value.m_usd;
             std::cout << std::fixed;
             std::cout << "¬и отримаЇте: " << std::setprecision(2) << out << " $" << std::endl;
         }
         else if (choice == "eur")
         {
-            out = inp / eur;
+            out = inp / value.m_eur;
             std::cout << std::fixed;
             std::cout << "¬и отримаЇте: " << std::setprecision(2) << out << " И" << std::endl;
 
         }
         else if (choice == "pln")
         {
-            out = inp / pln;
+            out = inp / value.m_pln;
             std::cout << std::fixed;
             std::cout << "¬и отримаЇте: " << std::setprecision(2) << out << " zl" << std::endl;
 
@@ -74,10 +71,12 @@ int main()
         std::cin >> так;
         if (так == "так")
         {
-            i = 1;
+             i = 1;
         }
         else
-            i = 0;
+        {
+             return 0;
+        }
 
         std::cout << "\033[2J\033[1;1H";
     }
